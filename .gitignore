@@ -1,0 +1,36 @@
+# Local .terraform directories
+**/.terraform/*
+
+# Local .vscode directories
+**/.vscode/*
+
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# log files
+*.log
+
+# bak files
+*.bak
+
+# Ignore any .tfvars files
+**/*.tfvars
+
+# Keep the test auto.tfvars files (non-sensitive)
+!examples/*/*.auto.tfvars
+
+# Ignore override files as they are usually used to override resources locally and so
+# are not checked in
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Include tfvars files you do wish to add to version control using negated pattern
+# !example_override.tf
+
+# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
+*.plan
+*tfplan*
