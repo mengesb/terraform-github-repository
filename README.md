@@ -14,7 +14,6 @@ Terraform module for creating GitHub repositories
 | name | string | yes |  | The name of the repository |
 | description | string | no | `null` | A description of the repository |
 | homepage_url | string | no | `null` | URL of a page description the project |
-| private | bool | no | `false` | Set to true to create a private repository. Repositories are created as public (e.g. open source) by default |
 | has_issues | bool | no | `false` | Set to true to enable the GitHub Issues features on the repository |
 | has_projects | bool | no | `false` | Set to true to enable the GitHub Projects features on the repository. Per the GitHub documentation when in an organization that has disabled repository projects it will default to false and will otherwise default to true. If you specify true when it has been disabled it will return an error |
 | has_wiki | bool | no | `false` | Set to true to enable the GitHub Wiki features on the repository |
@@ -30,6 +29,7 @@ Terraform module for creating GitHub repositories
 | archived | bool | no | `false` | Specifies if the repository should be archived. Defaults to false |
 | topics | list(string) | no | `null` | The list of topics of the repository |
 | template | object() | no | `null` | Supports two arguments: owner, template. Please see the [GitHub repository](https://www.terraform.io/docs/providers/github/r/repository.html#template-repositories) resource documentation for structure. |
+| visibility | string | no | `public` | Can be public or private. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, visibility can also be internal. |
 
 ## Examples
 
