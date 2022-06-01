@@ -3,7 +3,7 @@
 # Plan:: main.tf
 #
 
-module repository {
+module "repository" {
   source = "../../"
 
   for_each = var.repositories

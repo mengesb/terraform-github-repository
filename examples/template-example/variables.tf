@@ -3,25 +3,25 @@
 # Plan:: variables.tf
 #
 
-variable token {
+variable "token" {
   type        = string
   description = "A GitHub OAuth / Personal Access Token."
   default     = null
 }
 
-variable organization {
+variable "organization" {
   type        = string
   description = "Target GitHub organization account to manage. Conflicts with ownerand requires token."
   default     = null
 }
 
-variable owner {
+variable "owner" {
   type        = string
   description = "Target GitHub individual account to manage. Conflicts with organization."
   default     = null
 }
 
-variable base_url {
+variable "base_url" {
   type        = string
   description = "Target GitHub base API endpoin."
   default     = null
@@ -29,12 +29,12 @@ variable base_url {
 
 /* */
 
-variable name {
+variable "name" {
   type        = string
   description = "The name of the repository"
 }
 
-variable template {
+variable "template" {
   type = object(
     {
       owner      = string # The GitHub organization or user the template repository is owned by

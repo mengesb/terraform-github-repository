@@ -3,6 +3,6 @@
 # Plan:: outputs.tf
 #
 
-output tmp {
+output "tmp" {
   value = module.tmp.repository
 }

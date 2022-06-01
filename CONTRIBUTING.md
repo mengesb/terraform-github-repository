@@ -15,7 +15,7 @@ Before starting any work, I recommend filing a GitHub issue. This is your chance
 
 ## Update the documentation
 
-We recommend updating the documentation *before* updating any code (see [Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html)). This ensures the documentation stays up to date and allows you to think through the problem at a high level before you get lost in the weeds of coding.
+We recommend updating the documentation **before** updating any code (see [Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html)). This ensures the documentation stays up to date and allows you to think through the problem at a high level before you get lost in the weeds of coding.
 
 ## Update the tests
 
@@ -30,9 +30,9 @@ At this point, make your code changes and use your new test case to verify that 
 
 When making commits, please keep these style recommendations in mind:
 
-1. Commits _should_ be signed (`git commit -S -m '...`)
-1. Commits _should_ be made with your GitHub registered e-mail address
-1. Commits _should_ be made on a branch, preferably expressive about the target issue
+1. Commits **should** be signed (`git commit -S -m '...`)
+1. Commits **should** be made with your GitHub registered e-mail address
+1. Commits **should** be made on a branch, preferably expressive about the target issue
   (`git checkout -b fix_delete_on_head`)
 1. When in doubt, ASK!
 
@@ -41,9 +41,9 @@ When making commits, please keep these style recommendations in mind:
 Please make every effort to avoid unnecessary backwards incompatible changes. With Terraform code, this means:
 
 1. Do not delete, rename, or change the type of input variables.
-1. If you add an input variable, it should have a `default`.
+1. If you add an input variable, it should have a `default`, `description`, `type`, and `sensitive` attribute defined.
 1. Do not delete, rename, or change the type of output variables.
-1. Do not delete or rename a module in the `modules` folder.
+1. Do not delete or rename a module in the `modules` folder (submodules).
 
 If a backwards incompatible change cannot be avoided, please make sure to call that out when you submit a pull request, explaining why the change is absolutely necessary.
 

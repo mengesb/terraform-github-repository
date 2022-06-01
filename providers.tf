@@ -4,9 +4,13 @@
 #
 
 terraform {
-  required_version = "~> 0.13"
+  experiments      = [module_variable_optional_attrs]
+  required_version = "~> 1.1"
 
   required_providers {
-    github = ">= 2.9.2"
+    github = {
+      source  = "integrations/github"
+      version = "~> 4.0"
+    }
   }
 }
