@@ -27,7 +27,7 @@ jobs:
 
       - name: Run Go Tests (terratest)
         working-directory: .
-        run: 'ls -la ; cd test/terratest && go test -v'
+        run: 'ls -la ; cd test/terratest && ls -la; ls -la ../../examples/fixtures/terraform.tfvars; go test -v'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_OWNER: ${{ secrets.GITHUB_REPOSITORY_OWNER }}
