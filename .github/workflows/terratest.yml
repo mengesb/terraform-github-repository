@@ -8,6 +8,10 @@ jobs:
   terratest:
     name: Run Terratest
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: test/terratest
+
     steps:
       - uses: actions/checkout@v2
         with:
@@ -19,7 +23,6 @@ jobs:
           go-version-file: go.mod
           cache: true
           cache-dependency-path: go.sum
-          working-directory: test/terratest
 
       - uses: hashicorp/setup-terraform@v1
         with:
