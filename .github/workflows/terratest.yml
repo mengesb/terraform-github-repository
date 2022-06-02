@@ -26,7 +26,7 @@ jobs:
         run: go mod download
 
       - name: Generate fixture
-        run: 'echo ${{ secrets.GITHUB_TOKEN }} > examples/fixtures/terraform.tfvars'
+        run: 'echo "token = ${{ secrets.GITHUB_TOKEN }}" > examples/fixtures/terraform.tfvars'
 
       - name: Run Go Tests (terratest)
         working-directory: .
