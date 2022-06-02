@@ -1,0 +1,37 @@
+---
+name: Terratest
+
+on:
+  - pull_request
+
+jobs:
+  terratest:
+    name: Run Terratest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.18'
+          go-version-file: go.mod
+          cache: true
+          cache-dependency-path: go.sum
+          working-directory: test/terratest
+
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ~1.1
+
+      - name: Download Go Modules
+        working-directory: test/terratest
+        run: go mod download
+
+      - name: Run Go Tests (terratest)
+        working-directory: test/terratest
+        run: go test -v
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER: ${{ secrets.GITHUB_REPOSITORY_OWNER }}
