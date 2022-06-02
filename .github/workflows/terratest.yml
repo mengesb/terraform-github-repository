@@ -25,9 +25,12 @@ jobs:
         working-directory: test/terratest
         run: go mod download
 
+      - name: Generate fixture
+        run: 'echo ${{ secrets.GITHUB_TOKEN }} > examples/fixtures/terraform.tfvars'
+
       - name: Run Go Tests (terratest)
         working-directory: .
         run: 'tree; ls examples/fixtures ; cd test/terratest && echo $PWD; ls ../../examples/fixtures; echo $PWD ; go test -v'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_OWNER: ${{ secrets.GITHUB_REPOSITORY_OWNER }}
