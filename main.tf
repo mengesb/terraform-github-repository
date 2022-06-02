@@ -73,7 +73,7 @@ resource "github_branch" "b" {
 
 resource "github_branch_default" "b" {
   # Set the default branch if we auto_init and it isn't `main`
-  for_each   = { for k in local.branches : k => k if github_repository.r.auto_init && k != var.repository_default_branch && k == var.branch_default}
+  for_each   = { for k in local.branches : k => k if github_repository.r.auto_init && k != var.repository_default_branch && k == var.branch_default }
   repository = github_repository.r.name
   branch     = github_branch.b[each.key].branch
 }
