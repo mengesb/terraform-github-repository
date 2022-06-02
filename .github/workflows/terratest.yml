@@ -20,9 +20,9 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version: '1.18'
-          go-version-file: go.mod
+          go-version-file: test/terratest/go.mod
           cache: true
-          cache-dependency-path: go.sum
+          cache-dependency-path: test/terratest/go.sum
 
       - uses: hashicorp/setup-terraform@v1
         with:
