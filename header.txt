@@ -1,0 +1,12 @@
+<!-- markdownlint-disable MD024 MD033 -->
+# terraform-github-repository
+
+Terraform module for creating GitHub repositories
+
+## Experimental features
+
+This module uses the [experimental feature optional object type attributes](https://www.terraform.io/language/expressions/type-constraints#experimental-optional-object-type-attributes)
+
+## Additional information
+
+This module outputs attributes from the `github_repository` resource **and** data source. Because this module allows you to `auto_init` a repository and set a different `branch_default` than `main`, the resource is out of date from reality. For this reason, when the data source can provide the most up to date information on a repository attribute it will be used, and in cases where the data source doesn't provide the attribute value, the resource will be used.

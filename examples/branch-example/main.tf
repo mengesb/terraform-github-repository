@@ -1,9 +1,9 @@
 #
-# Terraform:: examples/single-example
+# Terraform:: examples/branch-example
 # Plan:: main.tf
 #
 
-module "r" {
+module "direct" {
   source = "../../"
 
   allow_merge_commit     = var.allow_merge_commit

@@ -3,8 +3,9 @@
 # Plan:: variables.tf
 #
 
-variable name {
+variable "name" {
   type        = string
+  sensitive   = false
   description = "The name of the repository"
 
   validation {
@@ -16,20 +17,23 @@ variable name {
   }
 }
 
-variable description {
+variable "description" {
   type        = string
+  sensitive   = false
   description = "A description of the repository"
   default     = null
 }
 
-variable homepage_url {
+variable "homepage_url" {
   type        = string
+  sensitive   = false
   description = "URL of a page description the project"
   default     = null
 }
 
-variable visibility {
+variable "visibility" {
   type        = string
+  sensitive   = false
   description = "Can be public or private. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, visibility can also be internal."
   default     = "public"
 
@@ -41,74 +45,93 @@ variable visibility {
   }
 }
 
-variable has_issues {
+variable "has_issues" {
   type        = bool
+  sensitive   = false
   description = "Set to true to enable the GitHub Issues features on the repository"
   default     = false
 }
 
-variable has_projects {
+variable "has_projects" {
   type        = bool
+  sensitive   = false
   description = "Set to true to enable the GitHub Projects features on the repository. Per the GitHub documentation when in an organization that has disabled repository projects it will default to false and will otherwise default to true. If you specify true when it has been disabled it will return an error"
   default     = false
 }
 
-variable has_wiki {
+variable "has_wiki" {
   type        = bool
+  sensitive   = false
   description = "Set to true to enable the GitHub Wiki features on the repository"
   default     = false
 }
 
-variable is_template {
+variable "is_template" {
   type        = bool
+  sensitive   = false
   description = "Set to true to tell GitHub that this is a template repository"
   default     = false
 }
 
-variable allow_merge_commit {
+variable "allow_merge_commit" {
   type        = bool
+  sensitive   = false
   description = "Set to false to disable merge commits on the repository"
   default     = true
 }
 
-variable allow_squash_merge {
+variable "allow_squash_merge" {
   type        = bool
+  sensitive   = false
   description = "Set to false to disable squash merges on the repository"
   default     = true
 }
 
-variable allow_rebase_merge {
+variable "allow_rebase_merge" {
   type        = bool
+  sensitive   = false
   description = "Set to false to disable rebase merges on the repository"
   default     = true
 }
 
-variable delete_branch_on_merge {
+variable "allow_auto_merge" {
   type        = bool
+  sensitive   = false
+  description = "Set to true to allow auto-merging pull requests on the repository"
+  default     = false
+}
+
+variable "delete_branch_on_merge" {
+  type        = bool
+  sensitive   = false
   description = "Automatically delete head branch after a pull request is merged. Defaults to false"
   default     = false
 }
 
-variable has_downloads {
+variable "has_downloads" {
   type        = bool
+  sensitive   = false
   description = "Set to true to enable the (deprecated) downloads features on the repository"
   default     = false
 }
 
-variable auto_init {
+variable "auto_init" {
   type        = bool
+  sensitive   = false
   description = "Set to true to produce an initial commit in the repository"
   default     = false
 }
 
-variable gitignore_template {
+variable "gitignore_template" {
   type        = string
+  sensitive   = false
   description = "Use the name of the template without the extension. For example, 'Haskell'"
   default     = null
 }
 
-variable license_template {
+variable "license_template" {
   type        = string
+  sensitive   = false
   description = "Use the name of the template without the extension. For example, 'mit' or 'mpl-2.0'"
   default     = null
 
@@ -120,25 +143,112 @@ variable license_template {
   }
 }
 
-variable archived {
+variable "archived" {
   type        = bool
+  sensitive   = false
   description = "Specifies if the repository should be archived. Defaults to false"
   default     = false
 }
 
-variable topics {
+variable "archive_on_destroy" {
+  type        = bool
+  sensitive   = false
+  description = "Set to true to archive the repository instead of deleting on destroy"
+  default     = false
+}
+
+variable "topics" {
   type        = list(string)
+  sensitive   = false
   description = "The list of topics of the repository"
   default     = null
 }
 
-variable template {
+variable "template" {
   type = object(
     {
       owner      = string # The GitHub organization or user the template repository is owned by
       repository = string # The name of the template repository
     }
   )
-  description = "Supports two arguments: owner, template. Please see the [GitHub repository](https://www.terraform.io/docs/providers/github/r/repository.html#template-repositories) resource documentation for structure."
+  sensitive   = false
+  description = "Use a template repository to create this resource. See [Template Repositories](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository#template-repositories) for details."
   default     = null
+}
+
+variable "pages" {
+  type = object(
+    {
+      branch = string           # The repository branch used to publish the site's source files
+      path   = optional(string) # The repository directory from which the site publishes
+    }
+  )
+  sensitive   = false
+  description = "The repository's GitHub Pages configuration. See [GitHub Pages Configuration](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository#github-pages-configuration) for details."
+  default     = null
+}
+
+variable "vulnerability_alerts" {
+  type        = bool
+  sensitive   = false
+  description = "Set to true to enable security alerts for vulnerable dependencies. See [GitHub Documentation](https://help.github.com/en/github/managing-security-vulnerabilities/about-security-alerts-for-vulnerable-dependencies) for details"
+  default     = false
+}
+
+variable "ignore_vulnerability_alerts_during_read" {
+  type        = bool
+  sensitive   = false
+  description = "Set to true to not call the vulnerability alerts endpoint so the resource can also be used without admin permissions during read"
+  default     = false
+}
+
+variable "branch_default" {
+  type        = string
+  sensitive   = false
+  description = "The default branch. Defaults to `main`"
+  default     = "main"
+
+  validation {
+    condition     = length(regexall("^([[:alnum:]])", var.branch_default)) == 1
+    error_message = "Branch names must begin with an alphanumeric character."
+  }
+
+  validation {
+    condition     = flatten(regexall("^([[:alnum:]]+[\\w\\-]+?)$", var.branch_default))[0] == var.branch_default
+    error_message = "Branch names must contain only the following valid characters: [0-9A-Za-z_\\-]."
+  }
+
+  validation {
+    condition     = length(var.branch_default) > 0
+    error_message = "Variable `branch_default` must have a value."
+  }
+}
+
+variable "branches" {
+  type        = list(string)
+  sensitive   = false
+  description = "Branches to configure for the repository"
+  default     = ["main"]
+}
+
+variable "repository_default_branch" {
+  type        = string
+  sensitive   = false
+  description = "GitHub and GitHub Enterprise organizations auto-initialize repositories with a default branch name. Default: `main`"
+  default     = "main"
+
+  validation {
+    condition     = length(regexall("^([[:alnum:]])", var.repository_default_branch)) == 1
+    error_message = "Branch names must begin with an alphanumeric character."
+  }
+
+  validation {
+    condition     = flatten(regexall("^([[:alnum:]]+[\\w\\-]+?)$", var.repository_default_branch))[0] == var.repository_default_branch
+    error_message = "Branch names must contain only the following valid characters: [0-9A-Za-z_\\-]."
+  }
+
+  validation {
+    condition     = length(var.repository_default_branch) > 0
+    error_message = "Variable `repository_default_branch` must have a value."
+  }
 }

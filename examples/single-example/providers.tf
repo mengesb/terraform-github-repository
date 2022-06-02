@@ -4,18 +4,18 @@
 #
 
 terraform {
-  required_version = "~> 0.13.0"
+  required_version = "~> 1.0"
+
   required_providers {
     github = {
-      version = "~> 3.0"
-      source  = "hashicorp/github"
+      version = "~> 4.0"
+      source  = "integrations/github"
     }
   }
 }
 
-provider github {
-  token        = var.token
-  owner        = var.owner
-  organization = var.organization
-  base_url     = var.base_url
+provider "github" {
+  token    = var.token
+  owner    = var.owner
+  base_url = var.base_url
 }

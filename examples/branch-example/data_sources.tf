@@ -1,4 +1,4 @@
 #
 # Terraform:: examples/single-example
-# Plan:: single.auto.tfvars
+# Plan:: data_sources.tf
 #

@@ -1,12 +1,11 @@
 #
-# Terraform:: examples/foreach-example
+# Terraform:: examples/branch-example
 # Plan:: providers.tf
 #
 
 terraform {
-  experiments      = [module_variable_optional_attrs]
   required_version = "~> 1.0"
-
+  
   required_providers {
     github = {
       version = "~> 4.0"

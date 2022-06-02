@@ -3,7 +3,7 @@
 # Plan:: main.tf
 #
 
-module tmp {
+module "tmp" {
   source = "../../"
 
   name     = var.name
