@@ -26,7 +26,7 @@ jobs:
         run: go mod download
 
       - name: Run Go Tests (terratest)
-        working-directory: /
+        working-directory: .
         run: 'echo $PWD ; cd test/terratest && go test -v'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
