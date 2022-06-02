@@ -10,12 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
 
       - uses: actions/setup-go@v3
         with:
-          go-version: '1.18'
           go-version-file: test/terratest/go.mod
           cache: true
           cache-dependency-path: test/terratest/go.sum
@@ -29,7 +26,8 @@ jobs:
         run: go mod download
 
       - name: Run Go Tests (terratest)
-        run: 'cd test/terratest && go test -v'
+        working-directory: /
+        run: 'echo $PWD ; cd test/terratest && go test -v'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_OWNER: ${{ secrets.GITHUB_REPOSITORY_OWNER }}
