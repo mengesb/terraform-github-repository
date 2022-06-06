@@ -63,7 +63,7 @@ func TestTerraformSingleExample(t *testing.T) {
 
 	terraformOptions := &terraform.Options{
 		TerraformDir: "../../examples/single-example",
-		VarFiles:     []string{"../../examples/fixtures/terraform.tfvars"},
+		//VarFiles:     []string{"../../examples/fixtures/terraform.tfvars"},
 		Vars: map[string]interface{}{
 			"name": expectedName,
 		},
@@ -139,8 +139,8 @@ func TestTerraformForEachExample(t *testing.T) {
 
 	terraformOptions := &terraform.Options{
 		TerraformDir: "../../examples/foreach-example",
-		VarFiles:     []string{"../../examples/fixtures/terraform.tfvars"},
-		NoColor:      true,
+		//VarFiles:     []string{"../../examples/fixtures/terraform.tfvars"},
+		NoColor: true,
 	}
 
 	defer terraform.Destroy(t, terraformOptions)
@@ -183,7 +183,7 @@ func TestTerraformBranchExample(t *testing.T) {
 
 	terraformOptions := &terraform.Options{
 		TerraformDir: "../../examples/branch-example",
-		VarFiles:     []string{"../../examples/fixtures/terraform.tfvars"},
+		//VarFiles:     []string{"../../examples/fixtures/terraform.tfvars"},
 		Vars: map[string]interface{}{
 			"name": expectedName,
 		},
