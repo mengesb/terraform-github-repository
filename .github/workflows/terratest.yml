@@ -28,7 +28,7 @@ jobs:
 
       - name: Run Go Tests (terratest)
         working-directory: test/terratest
-        run: 'env && exit 1;go test -v'
+        run: 'GITHUB_OWNER=$GITHUB_REPOSITORY_OWNER && go test -v'
         env:
           GITHUB_TOKEN: ${{ secrets.PA_TOKEN }}
-          GITHUB_OWNER: ${{ GITHUB_REPOSITORY_OWNER }}
+          #GITHUB_OWNER: ${{ GITHUB_REPOSITORY_OWNER }}
