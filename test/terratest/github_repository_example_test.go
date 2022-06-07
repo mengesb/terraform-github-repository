@@ -22,6 +22,10 @@ func TestTerraformSingleExample(t *testing.T) {
 	expectedName := "terraform-provider-singlemodule" + petname.Generate(2, "_")
 	expectedOrg := os.Getenv("GITHUB_OWNER")
 
+	if expectedOrg == "" {
+		expectedOrg = os.Getenv("GITHUB_REPOSITORY_OWNER")
+	}
+
 	expectedOutputs := map[string]interface{}{
 		"allow_auto_merge":       false,
 		"allow_merge_commit":     true,
@@ -121,6 +125,10 @@ func TestTerraformForEachExample(t *testing.T) {
 
 	expectedOrg := os.Getenv("GITHUB_OWNER")
 
+	if expectedOrg == "" {
+		expectedOrg = os.Getenv("GITHUB_REPOSITORY_OWNER")
+	}
+
 	expectedOutputsModule := map[string]interface{}{
 		"default_branch":         "main",
 		"delete_branch_on_merge": true,
@@ -212,6 +220,10 @@ func TestTerraformTemplateExample(t *testing.T) {
 
 	expectedName := "terraform-" + petname.Generate(2, "-")
 	expectedOrg := os.Getenv("GITHUB_OWNER")
+
+	if expectedOrg == "" {
+		expectedOrg = os.Getenv("GITHUB_REPOSITORY_OWNER")
+	}
 
 	expectedTmp := map[string]interface{}{
 		"full_name": expectedOrg + "/" + expectedName,
