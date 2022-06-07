@@ -2,7 +2,7 @@
 
 Contributions to this Module are very welcome! I follow a fairly standard [pull request process](https://help.github.com/articles/about-pull-requests/) for contributions, subject to the following guidelines:
 
-1. [File a GitHub Issue](#file-a-jira-issue)
+1. [File a GitHub Issue](#file-an-issue)
 1. [Update the documentation](#update-the-documentation)
 1. [Update the tests](#update-the-tests)
 1. [Update the code](#update-the-code)
@@ -19,7 +19,7 @@ We recommend updating the documentation **before** updating any code (see [Readm
 
 ## Update the tests
 
-We also recommend updating the automated tests *before* updating any code (see [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development)). That means you add or update a test case, verify that it's failing with a clear error message, and *then* make the code changes to get that test to pass. This ensures the tests stay up to date and verify all the functionality in this Module, including whatever new functionality you're adding in your contribution. Check out the [tests](https://github.com/mengesb/terraform-github-repository/tree/master/test) folder for instructions on running the automated tests.
+We also recommend updating the automated tests *before* updating any code (see [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development)). That means you add or update a test case, verify that it's failing with a clear error message, and *then* make the code changes to get that test to pass. This ensures the tests stay up to date and verify all the functionality in this Module, including whatever new functionality you're adding in your contribution. Check out the [tests](/test/terratest) folder for [instructions](test/terratest/README.md) on running the automated tests.
 
 ## Update the code
 

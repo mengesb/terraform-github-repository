@@ -1,0 +1,33 @@
+---
+name: Terratest
+
+on:
+  - pull_request
+
+jobs:
+  terratest:
+    name: Run Terratest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-go@v3
+        with:
+          go-version-file: test/terratest/go.mod
+          cache: true
+          cache-dependency-path: test/terratest/go.sum
+
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ~1.1
+          terraform_wrapper: false
+
+      - name: Download Go Modules
+        working-directory: test/terratest
+        run: go mod download
+
+      - name: Run Go Tests (terratest)
+        working-directory: test/terratest
+        run: 'go test -v'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PA_TOKEN }}
