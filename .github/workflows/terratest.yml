@@ -31,3 +31,4 @@ jobs:
         run: 'go test -v'
         env:
           GITHUB_TOKEN: ${{ secrets.PA_TOKEN }}
+          GITHUB_OWNER: ${{ github.repository_owner }}

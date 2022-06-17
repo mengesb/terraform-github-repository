@@ -23,6 +23,7 @@ func TestTerraformSingleExample(t *testing.T) {
 	expectedOrg := os.Getenv("GITHUB_OWNER")
 
 	if expectedOrg == "" {
+		os.Stdout.Write([]byte("Environment variable GITHUB_OWNER is undefined or empty, attempting to use GITHUB_REPOSITORY_OWNER"))
 		expectedOrg = os.Getenv("GITHUB_REPOSITORY_OWNER")
 	}
 
@@ -125,6 +126,7 @@ func TestTerraformForEachExample(t *testing.T) {
 	expectedOrg := os.Getenv("GITHUB_OWNER")
 
 	if expectedOrg == "" {
+		os.Stdout.Write([]byte("Environment variable GITHUB_OWNER is undefined or empty, attempting to use GITHUB_REPOSITORY_OWNER"))
 		expectedOrg = os.Getenv("GITHUB_REPOSITORY_OWNER")
 	}
 
@@ -219,6 +221,7 @@ func TestTerraformTemplateExample(t *testing.T) {
 	expectedOrg := os.Getenv("GITHUB_OWNER")
 
 	if expectedOrg == "" {
+		os.Stdout.Write([]byte("Environment variable GITHUB_OWNER is undefined or empty, attempting to use GITHUB_REPOSITORY_OWNER"))
 		expectedOrg = os.Getenv("GITHUB_REPOSITORY_OWNER")
 	}
 
