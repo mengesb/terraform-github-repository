@@ -46,7 +46,7 @@ output "auto_init" {
 }
 
 output "branches" {
-  value       = data.github_repository.r.branches
+  value       = data.github_repository_branches.r.branches
   sensitive   = false
   description = "Repository branches"
 }
