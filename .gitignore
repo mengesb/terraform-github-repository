@@ -1,9 +1,11 @@
 # Local .terraform directories
 **/.terraform/*
 
+# Example .terraform.locl.hcl files
+examples/*/.terraform.lock.hcl
+
 # Local .vscode directories
 **/.vscode/*
-
 
 # .tfstate files
 *.tfstate
