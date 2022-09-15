@@ -77,8 +77,3 @@ resource "github_branch_default" "b" {
   repository = github_repository.r.name
   branch     = github_branch.b[each.key].branch
 }
-
-data "github_repository" "r" {
-  depends_on = [github_branch.b, github_branch_default.b]
-  full_name  = github_repository.r.full_name
-}
