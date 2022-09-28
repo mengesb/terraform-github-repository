@@ -179,8 +179,8 @@ variable "template" {
 variable "pages" {
   type = object(
     {
-      branch = string           # The repository branch used to publish the site's source files
-      path   = optional(string) # The repository directory from which the site publishes
+      branch = string                # The repository branch used to publish the site's source files
+      path   = optional(string, "/") # The repository directory from which the site publishes
     }
   )
   sensitive   = false

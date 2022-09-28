@@ -6,9 +6,6 @@
 locals {
   # Construct a list of branches to create, with the first branch being the default for the org, the default the user wants
   branches = distinct(compact(concat([var.repository_default_branch, var.branch_default], var.branches)))
-  pages = defaults(var.pages, {
-    path = "/"
-  })
 }
 
 resource "github_repository" "r" {
