@@ -1,10 +1,6 @@
 ---
 name: Release Drafter
 
-permissions:
-  contents: write
-  pull-requests: write
-
 on:
   push:
     branches:
@@ -16,6 +12,10 @@ on:
 
 jobs:
   update_release_draft:
+    permissions:
+      contents: write
+      pull-requests: write
+
     runs-on: ubuntu-latest
     steps:
       - uses: release-drafter/release-drafter@v5
