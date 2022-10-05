@@ -3,7 +3,7 @@ name: Release Drafter
 
 permissions:
   contents: write
-  pull-requests: read
+  pull-requests: write
 
 on:
   push:
