@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/dustinkirkland/golang-petname v0.0.0-20191129215211-8e5a1ed0cff0
-	github.com/gruntwork-io/terratest v0.41.18
+	github.com/gruntwork-io/terratest v0.42.0
 	github.com/stretchr/testify v1.8.2
 )
 
