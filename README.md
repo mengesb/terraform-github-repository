@@ -13,7 +13,7 @@ This module outputs attributes from the `github_repository` resource **and** dat
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.3 |
-| <a name="requirement_github"></a> [github](#requirement\_github) | ~> 5.0 |
+| <a name="requirement_github"></a> [github](#requirement\_github) | >= 5.0 |
 
 ## Inputs
 
