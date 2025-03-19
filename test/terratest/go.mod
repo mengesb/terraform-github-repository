@@ -1,7 +1,6 @@
 module github.com/mengesb/terraform-github-repository
 
-go 1.18
-toolchain go1.24.1
+go 1.24
 
 require (
 	github.com/dustinkirkland/golang-petname v0.0.0-20191129215211-8e5a1ed0cff0
